@@ -21,7 +21,7 @@ public class PlayersManager : MonoBehaviour {
         Debug.Log($"Player {_playerCount} joined using {playerInput.devices[0].displayName}");
         _playersByDevice.Add(playerInput.devices[0], playerObject);
         if(playerObject != null && !players.Contains(playerObject)) players.Add(playerObject);
-        cameraGroup.UpdateListCameraPlayer();
+        cameraGroup?.UpdateListCameraPlayer();
         playerObject.GetComponent<PlayerController>().OnDeviceRemoved += OnDeviceLost;
     }
 
@@ -32,7 +32,7 @@ public class PlayersManager : MonoBehaviour {
         var playerObject = _playersByDevice[device];
         _playersByDevice.Remove(device); 
         if(playerObject != null && players.Contains(playerObject)) players.Remove(playerObject);
-        cameraGroup.UpdateListCameraPlayer();
+        cameraGroup?.UpdateListCameraPlayer();
         Destroy(playerObject);
         
 

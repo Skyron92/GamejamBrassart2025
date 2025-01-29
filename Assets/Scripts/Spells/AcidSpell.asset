@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castCooldown: 1
   acidPrefab: {fileID: 7692113588596830782, guid: 691353ce1b771674d9e58191ee03fd31, type: 3}
+  speedProjection: 10
