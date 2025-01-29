@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     // Device management
     public delegate void DeviceStatusChanged(object sender, PlayerInput playerInput);
     public event DeviceStatusChanged OnDeviceRemoved;
+    [HideInInspector] public bool Death = false;
     
     public void OnDeviceLost(PlayerInput playerInput) {
         OnDeviceRemoved?.Invoke(this, playerInput);
