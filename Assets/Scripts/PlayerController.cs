@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0,.5f)] float jumpForce = .2f;
     bool _isJumping;
     private float _gravity = -9.81f;
-    bool IsGrounded => characterController.isGrounded;
+    public bool IsGrounded => characterController.isGrounded;
     
     public void OnJump(InputAction.CallbackContext context) {
         if(IsGrounded && context.performed) _isJumping = true;
@@ -42,6 +43,9 @@ public class PlayerController : MonoBehaviour
         }
         _movement.y += _gravity * Time.fixedDeltaTime;
     }
+    
+    // Spell relative variables
+    [HideInInspector] public bool isNearToVoid;
     
     private void FixedUpdate() {
         ApplyGravity();
