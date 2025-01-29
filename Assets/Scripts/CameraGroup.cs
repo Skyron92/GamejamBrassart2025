@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 
 public class CameraGroup : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class CameraGroup : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +26,6 @@ public class CameraGroup : MonoBehaviour
         for (int i = 0; i < playersManager.players.Count; i++)
         {
             targetGroup.Targets[i].Object = playersManager.players[i].transform;
-            Debug.Log("Liste des cibles mise à jour dans CinemachineTargetGroup");
         }
     }
 }
