@@ -18,17 +18,17 @@ public class TargetGroupUpdater : MonoBehaviour
     {
         if (targetGroup == null) return;
 
-        // Création d'un tableau de cibles pour Cinemachine
+        // Crï¿½ation d'un tableau de cibles pour Cinemachine
         CinemachineTargetGroup.Target[] groupTargets = new CinemachineTargetGroup.Target[targets.Count];
 
-        for (int i = 0; i < targets.Count; i++)
+        /*for (int i = 0; i < targets.Count; i++)
         {
             groupTargets[i].target = targets[i];
             groupTargets[i].weight = defaultWeight;
             groupTargets[i].radius = defaultRadius;
-        }
+        }*/
 
-        // Mise à jour des cibles dans le CinemachineTargetGroup
+        // Mise ï¿½ jour des cibles dans le CinemachineTargetGroup
         targetGroup.m_Targets = groupTargets;
     }
 
