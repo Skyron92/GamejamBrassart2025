@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 /// Manages all the players devices
 /// </summary>
 public class PlayersManager : MonoBehaviour {
+
+    // Script of the group camera
+    public CameraGroup cameraGroup;
     
     private int _playerCount;
     private readonly Dictionary<InputDevice, GameObject> _playersByDevice = new Dictionary<InputDevice, GameObject>();
@@ -28,6 +31,7 @@ public class PlayersManager : MonoBehaviour {
         var playerObject = _playersByDevice[device];
         _playersByDevice.Remove(device); 
         if(playerObject != null && players.Contains(playerObject)) players.Remove(playerObject);
+        cameraGroup.UpdateListCameraPlayer();
         Destroy(playerObject);
         
 

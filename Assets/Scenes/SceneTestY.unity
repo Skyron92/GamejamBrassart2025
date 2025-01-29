@@ -1267,6 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8321363bbca4db7a740206817fdd023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
 --- !u!114 &1794647506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,7 +1283,19 @@ MonoBehaviour:
   PositionMode: 0
   RotationMode: 0
   UpdateMethod: 2
-  Targets: []
+  Targets:
+  - Object: {fileID: 0}
+    Weight: 0
+    Radius: 0
+  - Object: {fileID: 0}
+    Weight: 0
+    Radius: 0
+  - Object: {fileID: 0}
+    Weight: 0
+    Radius: 0
+  - Object: {fileID: 0}
+    Weight: 0
+    Radius: 0
   m_LegacyTargets: []
 --- !u!1 &1810666551
 GameObject:
