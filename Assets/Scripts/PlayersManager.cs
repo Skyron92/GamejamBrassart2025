@@ -9,6 +9,7 @@ public class PlayersManager : MonoBehaviour {
     
     private int _playerCount;
     private readonly Dictionary<InputDevice, GameObject> _playersByDevice = new Dictionary<InputDevice, GameObject>();
+    [HideInInspector] public List<GameObject> players = new List<GameObject>(); 
 
     public void OnPlayerJoined(PlayerInput playerInput) {
         _playerCount++;
@@ -16,6 +17,7 @@ public class PlayersManager : MonoBehaviour {
         playerObject.name = "Player " + _playerCount;
         Debug.Log($"Player {_playerCount} joined using {playerInput.devices[0].displayName}");
         _playersByDevice.Add(playerInput.devices[0], playerObject);
+        if(playerObject != null && !players.Contains(playerObject)) players.Add(playerObject);
         playerObject.GetComponent<PlayerController>().OnDeviceRemoved += OnDeviceLost;
     }
 
@@ -23,7 +25,11 @@ public class PlayersManager : MonoBehaviour {
         Debug.Log($"Player {_playerCount} left using {playerInput.devices[0].displayName}");
         _playerCount--;
         var device = playerInput.devices[0];
-        Destroy(_playersByDevice[device]);
-        _playersByDevice.Remove(device);
+        var playerObject = _playersByDevice[device];
+        _playersByDevice.Remove(device); 
+        if(playerObject != null && players.Contains(playerObject)) players.Remove(playerObject);
+        Destroy(playerObject);
+        
+
     }
 }
