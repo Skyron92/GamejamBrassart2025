@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -6101199102159457767}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,6 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb68d39b55c8fa4ab09279e1c2f2e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spell: {fileID: 11400000, guid: 7361133d9f901f348af2084cf84f835c, type: 2}
+  spell: {fileID: 11400000, guid: bf71a378bea779a40813d979e2527dd2, type: 2}
   player: {fileID: 6378667206138567277}
   spellIsAvailable: 0
