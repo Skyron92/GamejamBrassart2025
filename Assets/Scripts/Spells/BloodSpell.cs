@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Spell/Blood")]
@@ -10,6 +11,7 @@ public class BloodSpell : Spell
         if(!playerController.GetComponent<SpellCaster>().spellIsAvailable) return;
         if(_bloodObjectInstance != null) Destroy(_bloodObjectInstance);
         _bloodObjectInstance = Instantiate(GetBloodPlatformToSpawn(playerController), playerController.transform.position, Quaternion.identity);
+        _bloodObjectInstance.transform.Rotate(new Vector3(0,playerController.transform.rotation.eulerAngles.y - 90,0));
     }
 
     private GameObject GetBloodPlatformToSpawn(PlayerController playerController) {

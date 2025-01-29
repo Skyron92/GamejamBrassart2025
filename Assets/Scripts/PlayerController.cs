@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Manages a character controlled by a player
@@ -9,11 +10,13 @@ public class PlayerController : MonoBehaviour
     // Device management
     public delegate void DeviceStatusChanged(object sender, PlayerInput playerInput);
     public event DeviceStatusChanged OnDeviceRemoved;
-    [HideInInspector] public bool Death = false;
     
     public void OnDeviceLost(PlayerInput playerInput) {
         OnDeviceRemoved?.Invoke(this, playerInput);
     }
+    
+    // Health
+    [HideInInspector] public bool death;
     
     // Move
     [SerializeField] CharacterController characterController;
@@ -23,6 +26,14 @@ public class PlayerController : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext context) {
         _movement.x = context.ReadValue<float>();
+    }
+
+    private void Rotate() {
+        if(_movement.x == 0) return;
+        float rotationAngle = Vector3.Angle(_movement, Vector3.forward);
+        if(_movement.x < 0) rotationAngle = -rotationAngle;
+        Quaternion rotation = Quaternion.Euler(0, rotationAngle, 0);
+        transform.rotation = rotation;
     }
     
     // Jump
@@ -50,5 +61,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         ApplyGravity();
         characterController.Move(_movement * MoveSpeed);
+        Rotate();
     }
 }
