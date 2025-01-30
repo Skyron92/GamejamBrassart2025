@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 349756265741393894}
   - component: {fileID: 5906675305905316586}
   - component: {fileID: 301684303778998154}
-  - component: {fileID: 3326808881243401159}
+  - component: {fileID: 4176712640450285179}
   m_Layer: 0
-  m_Name: Cailloux
+  m_Name: Cailloux 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8915563956851122690}
-  m_Mesh: {fileID: 4199401309831131938, guid: 2bf6b92bbf0f9314ca556b5342c3295f, type: 3}
+  m_Mesh: {fileID: -448245740997676312, guid: 2bf6b92bbf0f9314ca556b5342c3295f, type: 3}
 --- !u!23 &301684303778998154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3326808881243401159
+--- !u!64 &4176712640450285179
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,4 +108,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4199401309831131938, guid: 2bf6b92bbf0f9314ca556b5342c3295f, type: 3}
+  m_Mesh: {fileID: -448245740997676312, guid: 2bf6b92bbf0f9314ca556b5342c3295f, type: 3}
