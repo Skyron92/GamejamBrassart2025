@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8dc4cc11b64a7fa079a0b680569858, type: 3}
   m_Name: BloodSpell
   m_EditorClassIdentifier: 
+  castCooldown: 1
+  spellColor: {r: 0.4433962, g: 0.085751146, b: 0.085751146, a: 1}
   bloodPlatformPrefab: {fileID: 4122704510027274646, guid: 3a42b7be4b196c94f85a9e2ece93b96e, type: 3}
   bloodWallPrefab: {fileID: 3338564430365492871, guid: 3e03bb1387d523644bf66e896abf165f, type: 3}
   bloodWayPrefab: {fileID: 1257950681185089596, guid: 21cc08e6a740a2249873c41302681631, type: 3}

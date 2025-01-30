@@ -7,6 +7,6 @@ public class AcidSpell : Spell {
     public override void CastSpell(PlayerController playerController) {
         if(!playerController.GetComponent<SpellCaster>().spellIsAvailable) return;
         var acidInstance = Instantiate(acidPrefab, playerController.transform.position + playerController.transform.right * 1.5f, Quaternion.identity);
-        acidInstance.GetComponent<Rigidbody>().AddForce(playerController.transform.right * speedProjection, ForceMode.Impulse);
+        acidInstance.GetComponent<Rigidbody>().AddForce(playerController.transform.forward * speedProjection, ForceMode.Impulse);
     }
 }
