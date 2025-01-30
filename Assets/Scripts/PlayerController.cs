@@ -77,8 +77,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext context) {
         _movement.x = context.ReadValue<float>();
-        direction = context.ReadValue<Vector2>();
-        Debug.Log(direction);
     }
     
     public void OnAim(InputAction.CallbackContext context) {
@@ -92,8 +90,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         ApplyGravity();
-        _movement = new Vector3(_movement.x, _movement.y, 0);
         characterController.Move(_movement * MoveSpeed);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         Rotate();
     }
 }
