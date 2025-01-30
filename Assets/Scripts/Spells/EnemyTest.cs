@@ -1,5 +1,7 @@
-﻿using DG.Tweening;
+﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyTest : MonoBehaviour, IHitable, IStunnable
 {
@@ -8,9 +10,13 @@ public class EnemyTest : MonoBehaviour, IHitable, IStunnable
         get => health;
         set => health = value < 0 ? 0 : value;
     }
-    
-     [SerializeField] Renderer renderer;
+    public bool Invincible { get; set; }
+
+    [SerializeField] Renderer renderer;
      private Material _material;
+     
+     private bool _isStunned = false;
+     [SerializeField, Range(0, 5)] private float stunDuration = 2f;
      private void Awake() {
          _material = renderer.material;
      }
@@ -21,8 +27,7 @@ public class EnemyTest : MonoBehaviour, IHitable, IStunnable
         }
     }
 
-    public void TakeDamage(float damage)
-    {
+    public void TakeDamage(float damage) {
         float speedAnimation = .1f;
         var color = _material.color;
         _material.DOColor(Color.red, speedAnimation).onComplete += () => {
@@ -40,8 +45,17 @@ public class EnemyTest : MonoBehaviour, IHitable, IStunnable
         Destroy(gameObject);
     }
 
-    public void Stun()
-    {
-        Debug.Log("Stunned");
+    public void Stun() {
+        StartCoroutine(StunCooldown());
+    }
+
+    IEnumerator StunCooldown() {
+        float timer = 0;
+        _isStunned = true;
+        while (timer < stunDuration) {
+            timer += Time.fixedTime;
+            yield return null;
+        }
+        _isStunned = false;
     }
 }
