@@ -56,9 +56,13 @@ public class PlayerController : MonoBehaviour
     
     // Spell relative variables
     [HideInInspector] public bool isNearToVoid;
+    
+    public void OnInteract(InputAction.CallbackContext context) {
+        if(!context.performed) return;
+        
+    }
 
-    private void Awake()
-    {
+    private void Awake() {
         Physics.IgnoreLayerCollision(7,7);
     }
 

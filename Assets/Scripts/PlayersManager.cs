@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -49,10 +47,12 @@ public class PlayersManager : MonoBehaviour {
         for (int i = 0; i < 4; i++) {
             if (players[i] != null) continue;
             spellCaster.gameObject.name = "Player " + _playerCount;
-            foreach (var t in spellManager.spells) {
+            for (int j = 0; j < spellManager.spells.Length; j++) {
+                var t = spellManager.spells[j];
                 if (t.taken) continue;
                 spellCaster.spell = t;
                 t.taken = true;
+                spellManager.spellSelector[j].Select(true);
                 break;
             }
             players[i] = spellCaster;
@@ -64,6 +64,11 @@ public class PlayersManager : MonoBehaviour {
         for (int i = 0; i < players.Length; i++) {
             if (players[i] == null) continue;
             if (players[i].gameObject.name == spellCaster.gameObject.name) {
+                for (int j = 0; j < spellManager.spells.Length; j++) {
+                    if (players[i].spell == spellManager.spells[j]) {
+                        spellManager.spellSelector[j].Select(false);
+                    }
+                }
                 players[i] = null;
                 return i;
             }
