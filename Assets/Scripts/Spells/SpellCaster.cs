@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class SpellCaster : MonoBehaviour
 {
-    [SerializeField] private Spell spell;
+    public Spell spell;
     [SerializeField] private PlayerController player;
     [HideInInspector] public bool spellIsAvailable = true;
 

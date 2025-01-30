@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,15 +14,19 @@ public class PlayersManager : MonoBehaviour {
     
     private int _playerCount;
     private readonly Dictionary<InputDevice, GameObject> _playersByDevice = new Dictionary<InputDevice, GameObject>();
-    [HideInInspector] public List<GameObject> players = new List<GameObject>(); 
-
+    public SpellCaster[] players =  new SpellCaster[4];
+    [SerializeField] private PlayerSlot[] playerSlots = new PlayerSlot[4];
+    [SerializeField] private SpellManager spellManager;
+    
     public void OnPlayerJoined(PlayerInput playerInput) {
         _playerCount++;
         var playerObject = playerInput.gameObject;
-        playerObject.name = "Player " + _playerCount;
+        var playerSpellCaster = playerObject.GetComponent<SpellCaster>();
         Debug.Log($"Player {_playerCount} joined using {playerInput.devices[0].displayName}");
         _playersByDevice.Add(playerInput.devices[0], playerObject);
-        if(playerObject != null && !players.Contains(playerObject)) players.Add(playerObject);
+        int indexPlayerJoined = -2;
+        if(playerSpellCaster != null) indexPlayerJoined = AssignPlayer(playerSpellCaster);
+        if(indexPlayerJoined >= 0 && indexPlayerJoined < players.Length) playerSlots[indexPlayerJoined].OnPlayerJoined(players[indexPlayerJoined]);;
         cameraGroup?.UpdateListCameraPlayer();
         playerObject.GetComponent<PlayerController>().OnDeviceRemoved += OnDeviceLost;
     }
@@ -30,11 +36,38 @@ public class PlayersManager : MonoBehaviour {
         _playerCount--;
         var device = playerInput.devices[0];
         var playerObject = _playersByDevice[device];
+        var playerSpellCaster = playerObject.GetComponent<SpellCaster>();
         _playersByDevice.Remove(device); 
-        if(playerObject != null && players.Contains(playerObject)) players.Remove(playerObject);
+        int indexPlayerJoined = -2;
+        if(playerSpellCaster != null) indexPlayerJoined = RemovePlayer(playerSpellCaster);
+        playerSlots[indexPlayerJoined].OnPlayerDisconnected();
         cameraGroup?.UpdateListCameraPlayer();
         Destroy(playerObject);
-        
+    }
 
+    private int AssignPlayer(SpellCaster spellCaster) {
+        for (int i = 0; i < 4; i++) {
+            if (players[i] != null) continue;
+            spellCaster.gameObject.name = "Player " + _playerCount;
+            foreach (var t in spellManager.spells) {
+                if (t.taken) continue;
+                spellCaster.spell = t;
+                t.taken = true;
+                break;
+            }
+            players[i] = spellCaster;
+            return i;
+        }
+        return -1;
+    }
+    private int RemovePlayer(SpellCaster spellCaster) {
+        for (int i = 0; i < players.Length; i++) {
+            if (players[i] == null) continue;
+            if (players[i].gameObject.name == spellCaster.gameObject.name) {
+                players[i] = null;
+                return i;
+            }
+        }
+        return -1;
     }
 }

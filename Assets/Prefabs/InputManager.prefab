@@ -89,3 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8321363bbca4db7a740206817fdd023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraGroup: {fileID: 0}
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spellManager: {fileID: 0}

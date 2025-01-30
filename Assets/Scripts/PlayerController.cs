@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -57,7 +58,12 @@ public class PlayerController : MonoBehaviour
     
     // Spell relative variables
     [HideInInspector] public bool isNearToVoid;
-    
+
+    private void Awake()
+    {
+        Physics.IgnoreLayerCollision(7,7);
+    }
+
     private void FixedUpdate() {
         ApplyGravity();
         characterController.Move(_movement * MoveSpeed);
