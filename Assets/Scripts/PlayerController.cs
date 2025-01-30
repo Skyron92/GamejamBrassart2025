@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// Manages a character controlled by a player
@@ -21,7 +19,7 @@ public class PlayerController : MonoBehaviour
     
     // Move
     [SerializeField] CharacterController characterController;
-    [SerializeField, Range(0,10)] float moveSpeed = 1;
+    [SerializeField, Range(0,100)] float moveSpeed = 1;
     private float MoveSpeed => moveSpeed * Time.deltaTime;
     private Vector3 _movement = Vector3.zero;
     
