@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         _canInteract = true;
     }
     
-    [HideInInspector] public Vector2 direction = Vector2.zero;
+    [HideInInspector] public Vector3 direction = Vector3.zero;
     
     public void OnMove(InputAction.CallbackContext context) {
         _movement.x = context.ReadValue<float>();
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
     
     public void OnAim(InputAction.CallbackContext context) {
         direction = context.ReadValue<Vector2>();
-        Debug.Log(direction);
     }
 
     private void Awake() {

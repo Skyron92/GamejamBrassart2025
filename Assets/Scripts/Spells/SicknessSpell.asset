@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castCooldown: 2
   spellColor: {r: 0.40320796, g: 0.251068, b: 0.5849056, a: 1}
-  taken: 0
+  taken: 1
+  sicknessPrefab: {fileID: 4024558876999178630, guid: f3968dcc34cfbeb49ab5d4efc4e87b98, type: 3}

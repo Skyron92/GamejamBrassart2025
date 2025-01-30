@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Destroyable : MonoBehaviour {
     
@@ -8,14 +9,17 @@ public class Destroyable : MonoBehaviour {
     Material _material;
     [SerializeField] private Color animationColor;
     [SerializeField, Range(1,10)] private float dissolveSpeed = 2;
+    [SerializeField] private EnemyTest enemyOwner;
 
-    private void Awake() {
+    private void Start() {
         _material = renderer.material;
+        if(enemyOwner != null) enemyOwner.Invincible = true;
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Spell")) {
-            other.gameObject.GetComponent<SpellObject>().Interact(gameObject);
+            var spell = other.gameObject.GetComponent<SpellObject>(); 
+            spell?.Interact(gameObject);
         }
     }
 
@@ -36,6 +40,10 @@ public class Destroyable : MonoBehaviour {
             value -= Time.deltaTime * dissolveSpeed;
             _material.SetFloat("_Dissolve", value);
             yield return null;
+        }
+        if (enemyOwner != null) {
+            var hitable = (IHitable)enemyOwner;
+            if(hitable != null) hitable.Invincible = false;
         }
         Destroy(gameObject);
     }
