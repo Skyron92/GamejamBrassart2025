@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -56,10 +57,25 @@ public class PlayerController : MonoBehaviour
     
     // Spell relative variables
     [HideInInspector] public bool isNearToVoid;
+    public delegate void SpellChange(SpellCaster caster);
+    public event SpellChange onSpellChanged;
+    bool _canInteract = true;
     
     public void OnInteract(InputAction.CallbackContext context) {
-        if(!context.performed) return;
-        
+        if(!context.started || !_canInteract) return;
+        StartCoroutine(InteractCooldown());
+        onSpellChanged?.Invoke(GetComponent<SpellCaster>());
+    }
+
+    private IEnumerator InteractCooldown() {
+        float timer = 0;
+        _canInteract = false;
+        while (timer < 2) {
+            timer += Time.fixedDeltaTime;
+            yield return null;
+        }
+        Debug.Log("Cooldown terminé !");
+        _canInteract = true;
     }
 
     private void Awake() {

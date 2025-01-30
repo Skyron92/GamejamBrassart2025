@@ -26,7 +26,34 @@ public class PlayersManager : MonoBehaviour {
         if(playerSpellCaster != null) indexPlayerJoined = AssignPlayer(playerSpellCaster);
         if(indexPlayerJoined >= 0 && indexPlayerJoined < players.Length) playerSlots[indexPlayerJoined].OnPlayerJoined(players[indexPlayerJoined]);;
         cameraGroup?.UpdateListCameraPlayer();
-        playerObject.GetComponent<PlayerController>().OnDeviceRemoved += OnDeviceLost;
+        var playerController = playerObject.GetComponent<PlayerController>();
+        playerController.OnDeviceRemoved += OnDeviceLost;
+        playerController.onSpellChanged += caster => {
+            if(_playerCount >= 4) return;
+            int currentIndex = 0;
+            for (int i = 0; i < spellManager.spells.Length; i++) {
+                if (spellManager.spells[i] == caster.spell) {
+                    currentIndex = i;
+                    Debug.Log($"Le joueur a le spell n° {i} {spellManager.spells[i].name}");
+                    break;
+                }
+            }
+            for (int i = currentIndex; i < spellManager.spells.Length; i++) {
+                if (spellManager.spells[i].taken) {
+                    if (i == spellManager.spells.Length - 1) {
+                        Debug.Log("On atteint la limite !");
+                        i = -1;
+                    }
+                    continue;
+                }
+                spellManager.Select(currentIndex, false);
+                spellManager.Select(i, true);
+                caster.spell.taken = false;
+                caster.spell = spellManager.spells[i];
+                spellManager.spells[i].taken = true;
+                return;
+            }
+        };
     }
 
     void OnDeviceLost(object sender, PlayerInput playerInput) {
