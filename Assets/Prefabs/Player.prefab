@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: 0
   characterController: {fileID: 6500786209644385881}
-  moveSpeed: 3
+  moveSpeed: 3.07
   jumpForce: 0.2
   isNearToVoid: 0
 --- !u!143 &6500786209644385881
