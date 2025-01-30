@@ -23,10 +23,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0,100)] float moveSpeed = 1;
     private float MoveSpeed => moveSpeed * Time.deltaTime;
     private Vector3 _movement = Vector3.zero;
-    
-    public void OnMove(InputAction.CallbackContext context) {
-        _movement.x = context.ReadValue<float>();
-    }
 
     private void Rotate() {
         if(_movement.x == 0) return;
@@ -70,12 +66,24 @@ public class PlayerController : MonoBehaviour
     private IEnumerator InteractCooldown() {
         float timer = 0;
         _canInteract = false;
-        while (timer < 2) {
+        while (timer < 1) {
             timer += Time.fixedDeltaTime;
             yield return null;
         }
-        Debug.Log("Cooldown terminé !");
         _canInteract = true;
+    }
+    
+    [HideInInspector] public Vector2 direction = Vector2.zero;
+    
+    public void OnMove(InputAction.CallbackContext context) {
+        _movement.x = context.ReadValue<float>();
+        direction = context.ReadValue<Vector2>();
+        Debug.Log(direction);
+    }
+    
+    public void OnAim(InputAction.CallbackContext context) {
+        direction = context.ReadValue<Vector2>();
+        Debug.Log(direction);
     }
 
     private void Awake() {
@@ -84,6 +92,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         ApplyGravity();
+        _movement = new Vector3(_movement.x, _movement.y, 0);
         characterController.Move(_movement * MoveSpeed);
         Rotate();
     }
