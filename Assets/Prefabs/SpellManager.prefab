@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spells:
-  - {fileID: 11400000, guid: 594eadddf1440364d90c3aa458024e3c, type: 2}
   - {fileID: 11400000, guid: bf71a378bea779a40813d979e2527dd2, type: 2}
+  - {fileID: 11400000, guid: 380cea11ef6f12b45a9c13f01bb27d5a, type: 2}
   - {fileID: 11400000, guid: 7361133d9f901f348af2084cf84f835c, type: 2}
+  - {fileID: 11400000, guid: 594eadddf1440364d90c3aa458024e3c, type: 2}
   spellSelector:
   - {fileID: 0}
   - {fileID: 0}

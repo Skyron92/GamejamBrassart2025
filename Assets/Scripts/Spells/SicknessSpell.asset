@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a957aa5c27224dc390daa6fd772ca0af, type: 3}
-  m_Name: GazSpell
+  m_Script: {fileID: 11500000, guid: 4e3648d65ebf43fc98b6c453e0c5ac1c, type: 3}
+  m_Name: SicknessSpell
   m_EditorClassIdentifier: 
-  castCooldown: 3
-  spellColor: {r: 0.15726236, g: 0.36881092, b: 0.5849056, a: 1}
+  castCooldown: 2
+  spellColor: {r: 0.40320796, g: 0.251068, b: 0.5849056, a: 1}
   taken: 0
-  gazPrefab: {fileID: 1774070247506264958, guid: ba575cd1b087e2340b447594568efff2, type: 3}
