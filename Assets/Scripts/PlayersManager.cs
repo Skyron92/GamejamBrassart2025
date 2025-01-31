@@ -110,8 +110,18 @@ public class PlayersManager : MonoBehaviour {
     [SerializeField] GameObject gameOver;
     private int _playerDead;
 
-    public void ChangePlayerDead(int i) {
-        _playerDead += i;
-        if(_playerDead >= _playerCount) gameOver.SetActive(true);
+    public void ChangePlayerDead() {
+        _playerDead = 0;
+        foreach (var t in players) {
+            if(t == null) continue;
+            var pc = t.gameObject.GetComponent<PlayerController>();
+            if(pc == null) continue;
+            if (!pc.death) continue;
+            _playerDead ++;
+            Debug.Log("nombre de morts dans foreach "+_playerDead);
+            if (_playerDead >= _playerCount) {
+                gameOver.SetActive(true);
+            }
+        }
     }
 }

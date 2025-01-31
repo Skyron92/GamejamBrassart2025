@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour, IHitable
         flowerInstance = Instantiate(flowerPrefab, transform.position, Quaternion.identity);
         flowerInstance.GetComponentInChildren<Flower>().playerController = this;
         var pm = FindFirstObjectByType<PlayersManager>();
-        pm.ChangePlayerDead(1);
+        pm.ChangePlayerDead();
     }
 
     public void Respawn(PlayerController playerController, GameObject flower) {
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour, IHitable
             playerController.OnRespawn?.Invoke();
         };
         var pm = FindFirstObjectByType<PlayersManager>();
-        pm.ChangePlayerDead(-1);
+        pm.ChangePlayerDead();
     }
 
     public void CancelRespawn(PlayerController playerController) {
