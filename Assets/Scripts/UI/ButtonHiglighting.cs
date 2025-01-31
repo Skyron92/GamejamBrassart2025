@@ -10,6 +10,11 @@ public class ButtonHiglighting : MonoBehaviour
     
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    private void Start()
+    {
+        ScaleAnimation();
+    }
+
     private void OnEnable() {
         if(!spriteRenderer) return;
         float animSpeed = .2f;
@@ -29,5 +34,11 @@ public class ButtonHiglighting : MonoBehaviour
             transform.DOScale(Vector3.one, animSpeed).onComplete += () =>
                 transform.DOScale(Vector3.one * 1.5f, animSpeed).onComplete +=
                     () => transform.DOScale(Vector3.one, animSpeed);
+    }
+
+    public void ScaleAnimation() {
+        float speedAnim = .5f;
+        transform.DOScale(Vector3.one * 1.1f, speedAnim).onComplete += () =>
+            transform.DOScale(Vector3.one , speedAnim).onComplete += () => ScaleAnimation();
     }
 }
