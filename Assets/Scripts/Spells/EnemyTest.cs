@@ -15,7 +15,7 @@ public class EnemyTest : MonoBehaviour, IHitable, IStunnable
     [SerializeField] Renderer renderer;
      private Material _material;
      
-     private bool _isStunned = false;
+     protected bool IsStunned = false;
      [SerializeField, Range(0, 5)] private float stunDuration = 2f;
      private void Awake() {
          _material = renderer.material;
@@ -51,11 +51,11 @@ public class EnemyTest : MonoBehaviour, IHitable, IStunnable
 
     IEnumerator StunCooldown() {
         float timer = 0;
-        _isStunned = true;
+        IsStunned = true;
         while (timer < stunDuration) {
             timer += Time.fixedTime;
             yield return null;
         }
-        _isStunned = false;
+        IsStunned = false;
     }
 }

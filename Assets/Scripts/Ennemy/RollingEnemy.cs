@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,17 @@ public class RollingEnemy : EnemyTest {
     [SerializeField, Range(0, 100)] private float moveSpeed = 15f;
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private Transform armor;
+
+    private void Start()
+    {
+        Physics.IgnoreLayerCollision(0, 8);
+    }
+
+    private void OnRenderObject() {
+        if(IsStunned) return;
+        transform.Translate(-transform.right * 3 * Time.deltaTime);
+        StartCoroutine(StartRotation());
+    }
 
     IEnumerator StartRotation() {
        float increment = Acceleration;

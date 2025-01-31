@@ -11,10 +11,11 @@ public class BloodObject : SpellObject {
     }
 
     public override void Interact(GameObject enemy) {
-        Camera.main.DOShakePosition(.2f, .5f, 3);
+        Camera.main.DOShakePosition(.5f, 1f, 10);
         var stunable = enemy.GetComponent<IStunnable>();
         if (stunable != null) {
             stunable.Stun();
         }
+        transform.DOScale(Vector3.zero, .1f).SetEase(Ease.Flash).onComplete += () => Destroy(gameObject);
     }
 }
