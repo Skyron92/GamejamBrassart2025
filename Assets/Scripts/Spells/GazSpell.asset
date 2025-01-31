@@ -15,4 +15,5 @@ MonoBehaviour:
   castCooldown: 3
   playerSlotSprite: {fileID: 21300000, guid: 473de7e4024afa14597f875ed76a1bd0, type: 3}
   taken: 0
+  id: 2
   gazPrefab: {fileID: 1774070247506264958, guid: ba575cd1b087e2340b447594568efff2, type: 3}
