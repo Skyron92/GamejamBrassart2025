@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,8 +10,15 @@ public class RollingEnemy : EnemyTest {
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private Transform armor;
 
-    private void Start() {
-        Move();
+    private void Start()
+    {
+        Physics.IgnoreLayerCollision(0, 8);
+    }
+
+    private void OnRenderObject() {
+        if(IsStunned) return;
+        transform.Translate(-transform.right * 3 * Time.deltaTime);
+        StartCoroutine(StartRotation());
     }
 
     IEnumerator StartRotation() {
@@ -22,8 +30,8 @@ public class RollingEnemy : EnemyTest {
         }
     }
 
-    public void Move() {
-        rigidbody.AddForce(-transform.right * moveSpeed, ForceMode.Impulse);
+    public void Charge(Vector3 direction) {
+        rigidbody.AddForce(direction * moveSpeed, ForceMode.Impulse);
         StartCoroutine(StartRotation());
     }
 }

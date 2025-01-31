@@ -13,6 +13,7 @@ public class SpellCaster : MonoBehaviour
     }
 
     public void OnAction(InputAction.CallbackContext context) {
+        if(player.death) return;
         if(!context.performed) return;
         spell?.CastSpell(player);
     }
