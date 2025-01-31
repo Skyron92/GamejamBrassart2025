@@ -64,6 +64,8 @@ public class PlayersManager : MonoBehaviour {
         var device = playerInput.devices[0];
         var playerObject = _playersByDevice[device];
         var playerSpellCaster = playerObject.GetComponent<SpellCaster>();
+        var pc = playerSpellCaster.GetComponent<PlayerController>();
+        pc.OnDeviceRemoved -= OnDeviceLost;
         _playersByDevice.Remove(device); 
         int indexPlayerJoined = -2;
         if(playerSpellCaster != null) indexPlayerJoined = RemovePlayer(playerSpellCaster);
@@ -103,5 +105,13 @@ public class PlayersManager : MonoBehaviour {
             }
         }
         return -1;
+    }
+
+    [SerializeField] GameObject gameOver;
+    private int _playerDead;
+
+    public void ChangePlayerDead(int i) {
+        _playerDead += i;
+        if(_playerDead >= _playerCount) gameOver.SetActive(true);
     }
 }

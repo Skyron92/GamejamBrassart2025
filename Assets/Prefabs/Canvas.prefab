@@ -456,6 +456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2842832070073142494}
   defaultColor: {r: 1, g: 0.99501103, b: 0, a: 1}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &6278996502471201368
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +912,22 @@ PrefabInstance:
       propertyPath: slotNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 8556557507385315910, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
       propertyPath: m_Name
       value: PlayerSlot (2)
@@ -1017,6 +1034,18 @@ PrefabInstance:
       propertyPath: slotNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 8556557507385315910, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
       propertyPath: m_Name
       value: PlayerSlot (1)
@@ -1118,10 +1147,6 @@ PrefabInstance:
     - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
       propertyPath: m_fontSize
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8556557507385315910, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
       propertyPath: m_Name
@@ -1228,6 +1253,22 @@ PrefabInstance:
     - target: {fileID: 4942186098095902911, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
       propertyPath: slotNumber
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8263445950153976280, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 8556557507385315910, guid: a814dfe864ce5e246b06c94ac2dec4cf, type: 3}
       propertyPath: m_Name

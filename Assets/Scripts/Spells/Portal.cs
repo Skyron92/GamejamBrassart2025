@@ -23,11 +23,11 @@ public class Portal : MonoBehaviour {
             players.Add(other.gameObject);
             if (players.Count == playersManager.PlayerCount) {
                 rotationSpeed = 1f;
-                fade.DOFade(1, .5f).onComplete += () => {
+                fade.DOFade(1, .3f).onComplete += () => {
                     foreach (var spellCaster in playersManager.players) {
                         spellCaster.transform.position = bossPosition.position;
                     }
-                    fade.DOFade(0, .5f);
+                    fade.DOFade(0, .3f);
                 };
             }
         }

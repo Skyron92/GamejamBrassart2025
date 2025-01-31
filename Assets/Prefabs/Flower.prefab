@@ -96,13 +96,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rose (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 353bd9b75424c854e88091dd9b4ff451, type: 3}
+      propertyPath: m_TagString
+      value: Flower
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 353bd9b75424c854e88091dd9b4ff451, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3321637009946823726}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 353bd9b75424c854e88091dd9b4ff451, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3995981642301685398}
   m_SourcePrefab: {fileID: 100100000, guid: 353bd9b75424c854e88091dd9b4ff451, type: 3}
 --- !u!4 &4655358666786200394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 353bd9b75424c854e88091dd9b4ff451, type: 3}
   m_PrefabInstance: {fileID: 5121034194493815969}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5463139741079929328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 353bd9b75424c854e88091dd9b4ff451, type: 3}
+  m_PrefabInstance: {fileID: 5121034194493815969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3321637009946823726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463139741079929328}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3428061, y: 0.68830895, z: 0.26682335}
+  m_Center: {x: 0.04403218, y: -0.01121977, z: 0.01583745}
+--- !u!114 &3995981642301685398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463139741079929328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf78bf566f2341b6b9ebe8dcd414c0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}

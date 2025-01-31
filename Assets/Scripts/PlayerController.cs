@@ -132,11 +132,14 @@ public class PlayerController : MonoBehaviour, IHitable
     [SerializeField] private GameObject visualGO, flowerPrefab, flowerInstance;
     [SerializeField] private SpriteRenderer respawnVFX;
 
-    float IHitable.Health
-    {
+    float IHitable.Health {
         get => _health;
         set => _health = value;
     }
+
+    public delegate void DeadEvent();
+    public event DeadEvent OnDead;
+    public event DeadEvent OnRespawn;
 
     public bool Invincible { get; set; }
     public void TakeDamage(float damage) {
@@ -155,6 +158,8 @@ public class PlayerController : MonoBehaviour, IHitable
         visualGO.SetActive(false);
         flowerInstance = Instantiate(flowerPrefab, transform.position, Quaternion.identity);
         flowerInstance.GetComponentInChildren<Flower>().playerController = this;
+        var pm = FindFirstObjectByType<PlayersManager>();
+        pm.ChangePlayerDead(1);
     }
 
     public void Respawn(PlayerController playerController, GameObject flower) {
@@ -164,7 +169,10 @@ public class PlayerController : MonoBehaviour, IHitable
             playerController.visualGO.SetActive(true);
             playerController.death = false;
             Destroy(flower);
+            playerController.OnRespawn?.Invoke();
         };
+        var pm = FindFirstObjectByType<PlayersManager>();
+        pm.ChangePlayerDead(-1);
     }
 
     public void CancelRespawn(PlayerController playerController) {
@@ -176,7 +184,9 @@ public class PlayerController : MonoBehaviour, IHitable
         if (other.gameObject.CompareTag("Flower")) {
             var flower = other.gameObject.GetComponent<Flower>();
             if(flower.playerController == this) return;
-            if (flower.playerController.death) Respawn(flower.playerController, other.gameObject);
+            if (flower.playerController.death) {
+                Respawn(flower.playerController, other.gameObject);
+            }
         }
     }
 
