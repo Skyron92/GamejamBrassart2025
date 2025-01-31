@@ -24,10 +24,12 @@ public class Portal : MonoBehaviour {
             if (players.Count == playersManager.PlayerCount) {
                 rotationSpeed = 1f;
                 fade.DOFade(1, .3f).onComplete += () => {
-                    foreach (var spellCaster in playersManager.players) {
+                    fade.DOFade(0, .3f);
+                    foreach (var spellCaster in playersManager.players)
+                    {
+                        spellCaster.gameObject.GetComponent<PlayerController>().isTp = true;
                         spellCaster.transform.position = bossPosition.position;
                     }
-                    fade.DOFade(0, .3f);
                 };
             }
         }

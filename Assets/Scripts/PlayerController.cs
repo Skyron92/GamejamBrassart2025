@@ -108,11 +108,16 @@ public class PlayerController : MonoBehaviour, IHitable
         _material = renderer.material;
     }
 
+    public bool isTp;
     private void FixedUpdate() {
         if(death) return;
+        if (!isTp)
+        {
+            characterController.Move(_movement * MoveSpeed);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        }
+        else isTp = false;
         ApplyGravity();
-        characterController.Move(_movement * MoveSpeed);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         Rotate();
     }
 

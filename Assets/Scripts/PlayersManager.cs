@@ -118,7 +118,6 @@ public class PlayersManager : MonoBehaviour {
             if(pc == null) continue;
             if (!pc.death) continue;
             _playerDead ++;
-            Debug.Log("nombre de morts dans foreach "+_playerDead);
             if (_playerDead >= _playerCount) {
                 gameOver.SetActive(true);
             }
