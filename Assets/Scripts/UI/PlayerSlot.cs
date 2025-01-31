@@ -7,21 +7,21 @@ public class PlayerSlot : MonoBehaviour
 {
     [SerializeField] PlayersManager playersManager;
     [SerializeField] Image image;
+    [SerializeField] Sprite disconnectedSprite;
     [SerializeField] TextMeshProUGUI textMeshPro;
     [SerializeField, Range(1,4)] int slotNumber;
 
-    private void Start()
-    {
+    private void Start() {
         OnPlayerDisconnected();
     }
 
     public void OnPlayerJoined(SpellCaster spellCaster) {
         textMeshPro.text = "Player " + slotNumber;
-        image.color = spellCaster.spell.spellColor;
+        image.sprite = spellCaster.spell.playerSlotSprite;
     }
 
     public void OnPlayerDisconnected() {
         textMeshPro.text = "Player " + slotNumber + "\nPress any\nbutton to join";
-        image.color = Color.grey;
+        image.sprite = disconnectedSprite;
     }
 }

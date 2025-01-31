@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GazSpell
   m_EditorClassIdentifier: 
   castCooldown: 3
-  spellColor: {r: 0.15726236, g: 0.36881092, b: 0.5849056, a: 1}
+  playerSlotSprite: {fileID: 21300000, guid: 473de7e4024afa14597f875ed76a1bd0, type: 3}
   taken: 0
   gazPrefab: {fileID: 1774070247506264958, guid: ba575cd1b087e2340b447594568efff2, type: 3}

@@ -9,10 +9,6 @@ public class RollingEnemy : EnemyTest {
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private Transform armor;
 
-    private void Start() {
-        Move();
-    }
-
     IEnumerator StartRotation() {
        float increment = Acceleration;
         while (Mathf.Abs(rigidbody.linearVelocity.magnitude) > .1f) {
@@ -22,8 +18,8 @@ public class RollingEnemy : EnemyTest {
         }
     }
 
-    public void Move() {
-        rigidbody.AddForce(-transform.right * moveSpeed, ForceMode.Impulse);
+    public void Charge(Vector3 direction) {
+        rigidbody.AddForce(direction * moveSpeed, ForceMode.Impulse);
         StartCoroutine(StartRotation());
     }
 }

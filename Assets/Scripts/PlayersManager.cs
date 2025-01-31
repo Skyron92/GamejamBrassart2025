@@ -25,8 +25,9 @@ public class PlayersManager : MonoBehaviour {
         _playersByDevice.Add(playerInput.devices[0], playerObject);
         int indexPlayerJoined = -2;
         if(playerSpellCaster != null) indexPlayerJoined = AssignPlayer(playerSpellCaster);
-        if(indexPlayerJoined >= 0 && indexPlayerJoined < players.Length) playerSlots[indexPlayerJoined].OnPlayerJoined(players[indexPlayerJoined]);;
+        if(indexPlayerJoined >= 0 && indexPlayerJoined < players.Length) playerSlots[indexPlayerJoined].OnPlayerJoined(players[indexPlayerJoined]);
         var playerController = playerObject.GetComponent<PlayerController>();
+        playerController.indexPlayer = indexPlayerJoined;
         playerController.OnDeviceRemoved += OnDeviceLost;
         playerController.onSpellChanged += caster => {
             if(_playerCount >= 4) return;
@@ -49,6 +50,8 @@ public class PlayersManager : MonoBehaviour {
                 caster.spell.taken = false;
                 caster.spell = spellManager.spells[i];
                 spellManager.spells[i].taken = true;
+                var controller = caster.GetComponent<PlayerController>();
+                playerSlots[controller.indexPlayer].OnPlayerJoined(players[controller.indexPlayer]);
                 return;
             }
         };
